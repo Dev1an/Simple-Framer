@@ -1,6 +1,6 @@
 # How to write a NWProtocolFramer for Network.framework that splits streams into frames using a delimiter?
 
-I tried to create a framer that splits a stream of ASCII bytes into frames separated by the pipe ascii character: `"|"`. This framer is located in [/Sources/SimpleFramer/SimpleFramer.swift](blob/62ef9cc28f72b9f7f6939f2f3ff42c71f1ed7e4f/Sources/SimpleFramer/SimpleFramer.swift)
+I tried to create a framer that splits a stream of ASCII bytes into frames separated by the pipe ascii character: `"|"`. This framer is located in [/Sources/SimpleFramer/SimpleFramer.swift](/Sources/SimpleFramer/SimpleFramer.swift)
 
 The problem is that from the moment I get a chunk that does not end with `"|"`, the framer gets stuck on that chunk. So the other chunks that come after this incomplete chunk never fully arrive in the `framer.parseInput(...)` call. Because it always parses chunks of `minimumIncompleteLength` and hence never arrives to the point where the next `"|"` is.
 
@@ -11,7 +11,7 @@ Here is a simple reproduction of this problem:
  3. Connect to the server (created in 1.) using the framer from above.
  4. Start receiving messages.
 
-The code for this reproduction is located in [/Tests/SimpleFramerTests/SimpleFramerTests.swift](blob/62ef9cc28f72b9f7f6939f2f3ff42c71f1ed7e4f/Tests/SimpleFramerTests/SimpleFramerTests.swift) and can be run using the following command in the terminal
+The code for this reproduction is located in [/Tests/SimpleFramerTests/SimpleFramerTests.swift](/Tests/SimpleFramerTests/SimpleFramerTests.swift) and can be run using the following command in the terminal
 
 ```shell
 swift test
